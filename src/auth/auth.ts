@@ -7,4 +7,7 @@ const adapter = new BetterSqlite3Adapter(db, {
 	session: "session",
 });
 
+// Configure Lucia.
 const lucia = new Lucia(adapter);
+
+console.log()
