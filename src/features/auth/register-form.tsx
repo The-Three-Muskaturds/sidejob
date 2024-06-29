@@ -5,7 +5,9 @@ import { Form, FormField, FormLabel, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import axios from "axios";
 import registerSchema from "@/schemas/register.schema";
+import sidejobServer from "@/utils/axios/sidejobSever.instance";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,7 +28,15 @@ function RegisterForm() {
 	});
 
 	const onSubmit = async (formData: FormValues) => {
-		console.log(formData);
+		try {
+			const response = await axios.post("/api/register", formData);
+			console.log(response);
+			// const data = response.data;
+
+			// console.log("Registration successful:", data);
+		} catch (error) {
+			console.error("Error registering user:", error);
+		}
 	};
 
 	return (
