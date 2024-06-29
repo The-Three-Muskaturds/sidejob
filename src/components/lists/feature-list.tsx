@@ -12,7 +12,7 @@ function FeatureList({ items }: FeatureListProps) {
 					key={index}
 					className="hover:text-foreground transition-all ease-out duration-300 "
 				>
-					<p className="transition-all ease-out duration-300 border-b-8 border-transparent hover:border-blue-500 border-dashed inline-flex">
+					<p className="transition-all ease-out duration-300 border-b-8 border-transparent hover:border-primary border-dashed inline-flex">
 						{item}
 					</p>
 				</li>
