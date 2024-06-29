@@ -15,7 +15,7 @@ function ButtonWithArrow({
 }: ButtonWithArrowProps) {
 	return (
 		<a
-			className={`group relative inline-flex items-center overflow-hidden rounded bg-[${hexCodeColor}] text-white  px-8 py-4 text-lg focus:outline-none focus:ring  hover:bg-[${hexCodeHover}] cursor-pointer`}
+			className={`group relative inline-flex items-center overflow-hidden rounded bg-[${hexCodeColor}] text-foreground  px-8 py-4 text-lg focus:outline-none focus:ring  hover:bg-[${hexCodeHover}] cursor-pointer`}
 			href={href}
 		>
 			<span className="absolute -end-full transition-all group-hover:end-4">

@@ -10,7 +10,7 @@ type HeroProps = {
 
 function Hero({ children }: HeroProps) {
 	return (
-		<section className="relative text-white">
+		<section className="relative text-foreground">
 			<div className="pt-64">{children}</div>
 		</section>
 	);

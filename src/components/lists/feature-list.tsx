@@ -10,7 +10,7 @@ function FeatureList({ items }: FeatureListProps) {
 			{items.map((item, index) => (
 				<li
 					key={index}
-					className="hover:text-white transition-all ease-out duration-300 "
+					className="hover:text-foreground transition-all ease-out duration-300 "
 				>
 					<p className="transition-all ease-out duration-300 border-b-8 border-transparent hover:border-blue-500 border-dashed inline-flex">
 						{item}

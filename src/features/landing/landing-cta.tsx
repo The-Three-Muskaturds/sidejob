@@ -12,8 +12,8 @@ type LandingCtaProps = {
 
 function LandingCta({ focalPoints, notifications }: LandingCtaProps) {
 	return (
-		<section className="w-full flex flex-col items-center justify-center py-32">
-			<div className="p-16 bg-gradient-to-br from-neutral-800 to-stone-700 rounded-3xl grid grid-cols-8 gap-2">
+		<section className="w-full flex flex-col items-center justify-center py-32 ">
+			<div className="p-16 bg-gradient-to-br from-card to-accent rounded-3xl grid grid-cols-8 gap-2 shadow-lg">
 				<div className="col-span-5">
 					<HighlightedTitle
 						title="Manage Clients Without"

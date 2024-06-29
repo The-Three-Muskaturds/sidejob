@@ -62,7 +62,7 @@ interface SparklesTextProps {
 
 const SparklesText: React.FC<SparklesTextProps> = ({
 	text,
-	colors = { first: "#56CCF2", second: "#2F80ED" },
+	colors = { first: "#f7853e", second: "#f66911" },
 	className,
 	sparklesCount = 10,
 	...props

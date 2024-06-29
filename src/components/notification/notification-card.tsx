@@ -20,15 +20,15 @@ function NotificationCard({ title, date, desc }: Notification) {
 					className={`flex h-10 w-10 items-center justify-center rounded-full`}
 					style={{backgroundColor: letterColor}}
 				>
-					<p className="text-white font-semibold">{title[0]}</p>
+					<p className="text-foreground font-semibold">{title[0]}</p>
 				</div>
 				<div className="flex flex-col overflow-hidden">
-					<figcaption className="flex flex-row items-center whitespace-pre text-lg font-medium dark:text-white ">
+					<figcaption className="flex flex-row items-center whitespace-pre text-lg font-medium dark:text-foreground ">
 						<span className="text-sm sm:text-lg">{title}</span>
 						<span className="mx-1">·</span>
 						<span className="text-xs text-gray-500">{formattedDate}</span>
 					</figcaption>
-					<p className="text-sm font-normal dark:text-white/60">{desc}</p>
+					<p className="text-sm font-normal dark:text-foreground/60">{desc}</p>
 				</div>
 			</div>
 		</figure>

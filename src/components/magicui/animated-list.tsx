@@ -57,7 +57,7 @@ export function AnimatedListItem({ children }: { children: React.ReactNode }) {
 		<motion.div
 			{...animations}
 			layout
-			className="mx-auto w-full"
+			className="mx-auto w-full "
 		>
 			{children}
 		</motion.div>

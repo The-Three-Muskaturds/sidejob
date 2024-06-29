@@ -60,7 +60,7 @@ function Page({}: Props) {
 	return (
 		<div className="pt-32 mx-auto">
 			<input
-				className="text-white"
+				className="text-foreground"
 				type="file"
 				accept="image/*"
 				onChange={handleFileChange}
