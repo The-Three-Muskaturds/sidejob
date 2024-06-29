@@ -1,21 +1,21 @@
 import { ZodType, z } from "zod";
 
 type RegisterData = {
-	"first-name": string;
-	"last-name": string;
+	"first_name": string;
+	"last_name": string;
 	username: string;
 	email: string;
 	password: string;
-	"confirm-password": string;
+	"confirm_password": string;
 };
 
 const registerSchema: ZodType<RegisterData> = z
 	.object({
-		"first-name": z
+		"first_name": z
 			.string()
 			.min(3, { message: "First name must be at least 3 characters long" })
 			.max(50, { message: "First name cannot exceed 50 characters" }),
-		"last-name": z
+		"last_name": z
 			.string()
 			.min(3, { message: "Last name must be at least 3 characters long" })
 			.max(50, { message: "Last name cannot exceed 50 characters" }),
@@ -28,7 +28,7 @@ const registerSchema: ZodType<RegisterData> = z
 			.string()
 			.min(7, { message: "Password must be at least 7 characters long" })
 			.max(32, { message: "Password cannot exceed 32 characters" }),
-		"confirm-password": z
+		"confirm_password": z
 			.string()
 			.min(7, {
 				message: "Confirm password must be at least 7 characters long",
@@ -37,7 +37,7 @@ const registerSchema: ZodType<RegisterData> = z
 				message: "Confirm password cannot exceed 32 characters",
 			}),
 	})
-	.refine((data) => data.password === data["confirm-password"], {
+	.refine((data) => data.password === data["confirm_password"], {
 		message: "Passwords must match",
 		path: ["confirm-password"],
 	});

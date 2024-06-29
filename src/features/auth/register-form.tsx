@@ -18,24 +18,29 @@ function RegisterForm() {
 	const form = useForm<FormValues>({
 		resolver: zodResolver(registerSchema),
 		defaultValues: {
-			"first-name": "",
-			"last-name": "",
+			first_name: "",
+			last_name: "",
 			username: "",
 			email: "",
 			password: "",
-			"confirm-password": "",
+			confirm_password: "",
 		},
 	});
 
 	const onSubmit = async (formData: FormValues) => {
 		try {
+			console.log("FORM DATA: ", formData);
 			const response = await axios.post("/api/register", formData);
 			console.log(response);
-			// const data = response.data;
 
-			// console.log("Registration successful:", data);
-		} catch (error) {
-			console.error("Error registering user:", error);
+		} catch (error: any) {
+			console.log("ON SUBMIT ERROR: ", error.response.data.error);
+			if (error.response.data.error === "User already exists") {
+				form.setError("username", {
+					type: "api",
+					message: error.response.data.error,
+				});
+			}
 		}
 	};
 
@@ -49,12 +54,12 @@ function RegisterForm() {
 					<div className="grid grid-cols-2 gap-4">
 						<FormField
 							control={form.control}
-							name="first-name"
+							name="first_name"
 							render={({ field }) => (
 								<div>
 									<FormLabel>First Name</FormLabel>
 									<Input
-										id="first-name"
+										id="first_name"
 										placeholder="John"
 										{...field}
 									/>
@@ -64,12 +69,12 @@ function RegisterForm() {
 						/>
 						<FormField
 							control={form.control}
-							name="last-name"
+							name="last_name"
 							render={({ field }) => (
 								<div>
 									<FormLabel>Last Name</FormLabel>
 									<Input
-										id="last-name"
+										id="last_name"
 										placeholder="Doe"
 										{...field}
 									/>
@@ -126,7 +131,7 @@ function RegisterForm() {
 					/>
 					<FormField
 						control={form.control}
-						name="confirm-password"
+						name="confirm_password"
 						render={({ field }) => (
 							<div>
 								<FormLabel>Confirm Password</FormLabel>
