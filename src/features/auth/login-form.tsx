@@ -33,7 +33,6 @@ export function LoginForm() {
 
 	const onSubmit = async (formData: FormValues) => {
 		try {
-			console.log("FORM DATA: ", formData);
 			const response = await sidejobApi.post("/auth/login", formData);
 			console.log(response);
 		} catch (error: any) {
