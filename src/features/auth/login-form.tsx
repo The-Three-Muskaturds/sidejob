@@ -13,32 +13,28 @@ import { Form, FormField, FormLabel, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import registerSchema from "@/schemas/register.schema";
+import axios from "axios";
+import loginSchema from "@/schemas/login.scehma";
 import sidejobApi from "@/utils/axios/sidejobApi.instace";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-type FormValues = z.infer<typeof registerSchema>;
+type FormValues = z.infer<typeof loginSchema>;
 
-function RegisterForm() {
+export function LoginForm() {
 	const form = useForm<FormValues>({
-		resolver: zodResolver(registerSchema),
+		resolver: zodResolver(loginSchema),
 		defaultValues: {
-			first_name: "",
-			last_name: "",
 			username: "",
-			email: "",
 			password: "",
-			confirm_password: "",
 		},
 	});
 
 	const onSubmit = async (formData: FormValues) => {
 		try {
 			console.log("FORM DATA: ", formData);
-			const response = await sidejobApi.post("/auth/register", formData);
-			const data = response.data;
+			const response = await sidejobApi.post("/auth/login", formData);
 			console.log(response);
 		} catch (error: any) {
 			console.log("ON SUBMIT ERROR: ", error.response.data.error);
@@ -65,38 +61,6 @@ function RegisterForm() {
 						</CardDescription>
 					</CardHeader>
 					<CardContent className="grid gap-4">
-						<div className="grid grid-cols-2 gap-4">
-							<FormField
-								control={form.control}
-								name="first_name"
-								render={({ field }) => (
-									<div>
-										<FormLabel>First Name</FormLabel>
-										<Input
-											id="first_name"
-											placeholder="John"
-											{...field}
-										/>
-										<FormMessage />
-									</div>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name="last_name"
-								render={({ field }) => (
-									<div>
-										<FormLabel>Last Name</FormLabel>
-										<Input
-											id="last_name"
-											placeholder="Doe"
-											{...field}
-										/>
-										<FormMessage />
-									</div>
-								)}
-							/>
-						</div>
 						<FormField
 							control={form.control}
 							name="username"
@@ -106,22 +70,6 @@ function RegisterForm() {
 									<Input
 										id="username"
 										placeholder="Username"
-										{...field}
-									/>
-									<FormMessage />
-								</div>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="email"
-							render={({ field }) => (
-								<div>
-									<FormLabel>Email</FormLabel>
-									<Input
-										id="email"
-										type="email"
-										placeholder="john@doe.com"
 										{...field}
 									/>
 									<FormMessage />
@@ -143,33 +91,18 @@ function RegisterForm() {
 								</div>
 							)}
 						/>
-						<FormField
-							control={form.control}
-							name="confirm_password"
-							render={({ field }) => (
-								<div>
-									<FormLabel>Confirm Password</FormLabel>
-									<Input
-										id="confirm-password"
-										type="password"
-										{...field}
-									/>
-									<FormMessage />
-								</div>
-							)}
-						/>
 					</CardContent>
 					<CardFooter className="flex flex-col">
 						<Button
 							type="submit"
 							className="w-full"
 						>
-							Create an account
+							Login
 						</Button>
 						<div className="mt-4 text-center text-sm">
-							Already have an account?{" "}
+							Don't have an account?{" "}
 							<Link
-								href="/login"
+								href="/register"
 								className="underline"
 							>
 								Sign in
@@ -181,5 +114,3 @@ function RegisterForm() {
 		</Card>
 	);
 }
-
-export default RegisterForm;
